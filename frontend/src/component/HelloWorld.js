@@ -1,11 +1,11 @@
-import {LitElement, html,css} from 'lit-element';
+import {css, html, LitElement} from 'lit-element';
 import '@vaadin/vaadin-text-field/vaadin-text-field.js';
 import '@vaadin/vaadin-button/vaadin-button.js';
 import '@axa-ch/input-text';
 
 class HelloWorld extends LitElement {
 
-    static get styles(){
+    static get styles() {
         return css`
           :host {
             display: block;
@@ -18,8 +18,9 @@ class HelloWorld extends LitElement {
 
         `
     }
-render() {
-return html`
+
+    render() {
+        return html`
             <div>
                 <vaadin-text-field id="firstInput"></vaadin-text-field>
                 <axa-input-text id="secondInput"></axa-input-text>
