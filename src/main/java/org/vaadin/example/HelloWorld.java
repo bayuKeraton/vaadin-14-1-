@@ -7,7 +7,7 @@ import com.vaadin.flow.component.littemplate.LitTemplate;
 
 @Tag("hello-world")
 @NpmPackage(value = "@axa-ch/input-text", version = "4.3.11")
-@JsModule("./src/hello-world.ts")
+@JsModule("./src/component/hello-world.ts")
 public class HelloWorld extends LitTemplate {
 
     /**

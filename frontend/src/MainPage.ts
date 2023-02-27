@@ -3,10 +3,16 @@ import {LitElement,html,css} from "lit-element"
 class MainPage extends LitElement{
     static get styles(){
         return css`
-    :host{
+    .body {
       background-color: cornsilk;
       color: red;
     }
+          #helloButton{
+            font-size: 20px;
+            background-color: #877f89;
+            color: red;
+            margin-left: 200px;
+          }
     `;
     }
 
