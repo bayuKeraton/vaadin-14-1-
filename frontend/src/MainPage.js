@@ -17,7 +17,7 @@ class MainPage extends LitElement{
     }
 
     render(){
-        console.log("Hello World");
+
         return html`
         <div id="content"></div>
         <button id="helloButton">Click Me!</button>`

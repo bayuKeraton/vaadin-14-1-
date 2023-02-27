@@ -11,7 +11,7 @@ import com.vaadin.flow.component.polymertemplate.Id;
 //interact with MainPage.ts
 @Tag("main-page")
 //module of the TS file
-@JsModule("./src/MainPage.ts")
+@JsModule("./src/MainPage.js")
 public class MainPage extends LitTemplate {
     @Id("content")
     private Div content;

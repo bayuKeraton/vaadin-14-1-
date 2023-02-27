@@ -1,10 +1,17 @@
 package org.vaadin.example;
 
+import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.CssImport;
+import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.html.Label;
+import com.vaadin.flow.component.littemplate.LitTemplate;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.template.Id;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.PWA;
+import org.apache.catalina.User;
+
+import java.util.Optional;
 
 
 @Route
@@ -14,18 +21,32 @@ import com.vaadin.flow.server.PWA;
         enableInstallPrompt = false)
 @CssImport("./styles/shared-styles.css")
 @CssImport(value = "./styles/vaadin-text-field-styles.css", themeFor = "vaadin-text-field")
-public class MainView extends VerticalLayout {
 
+@Tag("main-view")
+@JsModule("./src/main-view.ts")
+public class MainView extends LitTemplate {
 
-    public MainView() {
+    @Id("user-form")
+    private UserForm userForm;
 
-//       Inserting mainpage to mainview
-//        define module
-        MainPage main= new MainPage();
-        main.setContent(new Label("Hello World!"));
+    @Id("users-grid")
+    private UsersGrid usersGrid;
 
-        add(main);
+    public MainView(){
+        usersGrid.addSelectionListener(selectionEvent -> {
+        Optional<User> optionalUser = usersGrid.getSelectedItems().stream().findAny();
+
+        if (optionalUser.isPresent()) {
+            userForm.setBean(optionalUser.get());
+            setEditionEnabled(true);
+        } else {
+            userForm.removeBean();
+            setEditionEnabled(false);
+        }
+    });
+
+    initFormListeners();
+
 
     }
-
 }
